@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Empty colomen -->
+
+
+        
+        </div>
+        <div class="col-md-4" style="text-align: left; margin-left: 7%; border: 1px black solid;">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <h2 class="register_register">Register</h2>
+                <br>
+                <div class="login_in_login">
+                    <img class="login_pfp" src="{{ url_for('static', filename='Images/PFP.jpg') }}" />
+                    <img class="login_profile" src="{{ url_for('static', filename='Images/Profile.png') }}" />
+                </div>
+                <br>
+                <br>
+                <p>
+                    {{ form.username.label }} <br>
+                    {{ form.username(size=32) }}<br>
+                    {% for error in form.username.errors %}
+                        <span style="color: rebeccapurple;">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.email.label }} <br>
+                    {{ form.email(size=32) }}<br>
+                    {% for error in form.email.errors %}
+                        <span style="color: rebeccapurple;">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }} <br>
+                    {{ form.password(size=32) }}<br>
+                    {% for error in form.password.errors %}
+                        <span style="color: rebeccapurple;">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.confirm_password.label }} <br>
+                    {{ form.confirm_password(size=32) }}<br>
+                    {% for error in form.confirm_password.errors %}
+                        <span style="color: rebeccapurple;">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <!-- Empty -->
+        </div>
+    </div>
+{% endblock %}

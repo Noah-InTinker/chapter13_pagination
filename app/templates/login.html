@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Empty column -->
+
+
+        
+        </div>
+        <div class="col-md-4" style="text-align: left; margin-left: 7%; border: 1px black solid;">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <h3 class="login_in_login">Log in</h3>
+                <br>
+                <br>
+                <div class="login_in_login">
+                    <img class="login_pfp" src="{{ url_for('static', filename='Images/PFP.jpg') }}" />
+                    <img class="login_profile" src="{{ url_for('static', filename='Images/Profile.png') }}" />
+                </div>
+                <br>
+                <br>
+                <p>
+                    {{ form.username.label }} <br>
+                    {{ form.username(sive=32) }}<br>
+                    {% for error in form.username.errors %}
+                        <span style="color: rgb(38, 32, 44);">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }} <br>
+                    {{ form.password(sive=32) }}<br>
+                    {% for error in form.password.errors %}
+                        <span style="color: rebeccapurple;">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                </p>
+                <p>
+                    {{ form.submit() }}
+                </p>
+                <p>
+                    New here? Why not <hl><a href="{{'register'}}">Register</a></hl>
+                </p>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <!-- Empty -->
+        </div>
+    </div>
+{% endblock %}

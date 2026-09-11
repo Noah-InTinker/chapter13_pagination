@@ -1,0 +1,64 @@
+
+.login_pfp{
+    width: 25%;
+    height: 25%;
+}
+
+.login_profile{
+    width: 50%;
+    height: 50%;
+}
+
+.login_in_login{
+    text-align: center;
+}
+
+.home_page_home{
+    color: gold;
+}
+
+.home_page_profile{
+    color: green;
+}
+
+.login-col-md-4{
+    text-align: right;
+}
+
+.login_homepage{
+    right: 20%;
+}
+
+.register_register{
+    text-align: center;
+    color: black;
+}
+
+.profile_homepage{
+    text-align: right;
+    margin-right: -40px;
+    margin-left: 80px;
+}
+
+.logout{
+    color: red;
+}
+
+.logout_homepage{
+    text-align: left;
+    margin-left: -40px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.flash_message{
+    color: lime;
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.login_link{
+    text-align: left;
+}
