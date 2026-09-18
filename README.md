@@ -1,8 +1,2 @@
-# chapter8_web_forms
-# chapter8_web_forms
-# chapter9
-# chapter9
-# chapter8_user_authentication
-# chapter10_profile_page
-# chapter11_profile_page.
-# chapter12_error_handelling 
+# Chapter 13: Pagination
+This lesson about learning pagination and how to implement it. I've added it to the profile page, and the the index page, with a maximum amount of posts as 3 per page.
