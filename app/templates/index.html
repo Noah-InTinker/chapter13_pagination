@@ -6,7 +6,7 @@
     <h1 class="all_messages">All Messages</h1>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered"> 
+            <!-- <table class="table table-bordered"> 
                 <tr>
                     <th>Avatar</th>
                     <th>Username</th>
@@ -25,13 +25,32 @@
                         </tr>
                         {% endif %}
                     {% endfor %}
-            </table>
+            </table> -->
         {% if current_user.is_authenticated %}
         {% else %}
             <p class="login_link">
             <a href="{{'login'}}">Log in to post.</a>
             </p>
         {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {% for post in posts %}
+                {% if post %}
+                    {% include '_post.html' %}
+                {% endif %}
+            {% endfor %}
+
+            <!-- Pagination -->>
+            {% if prev_url %}
+                <a href=" {{ prev_url }} ">Newer posts</a>
+            {% endif %}
+            {% if next_url %}
+                <a href=" {{ next_url }} ">Older posts</a>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

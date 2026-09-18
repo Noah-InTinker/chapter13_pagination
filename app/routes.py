@@ -19,10 +19,23 @@ def before_request():
 def index():
     "Index URL"
     posts = Post.query.all()
+
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page=page,
+        per_page=app.config['POSTS_PER_PAGE'],
+        error_out=False)
+    next_url = url_for('index', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('index', page=posts.prev_num) \
+        if posts.has_prev else None
+
     return render_template(
         'index.html',
         title='Home',
-        posts=posts)
+        posts=posts.items,
+        next_url=next_url,
+        prev_url=prev_url)
 
 @app.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -99,13 +112,25 @@ def profile(username):
         flash('Your post is live!')
         return redirect(url_for('index'))
     user = User.query.filter_by(username=username).first_or_404()
-    posts = current_user.post.all()
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.post.paginate(
+        page=page,
+        per_page=app.config['POSTS_PER_PAGE'],
+        error_out=False)
+    next_url = url_for('profile', username=current_user.username, page=page.next_num) \
+            if posts.has_next else None
+    prev_url = url_for('profile', username=current_user.username, page=posts.prev_num) \
+            if posts.has_prev else None
+    
+
     return render_template(
         'profile.html',
         title='Profile',
         user=user,
         form=form,
-        posts=posts)
+        posts=posts.items,
+        next_url=next_url,
+        prev_url=prev_url)
 
 @app.route('/test-error')
 def test_error():
